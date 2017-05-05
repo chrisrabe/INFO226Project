@@ -1,0 +1,22 @@
+/* Styles for the buttons */
+
+.button {
+  background-color: #004d80;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+
+.button {
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: #007acc;
+}

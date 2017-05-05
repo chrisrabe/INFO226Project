@@ -1,0 +1,81 @@
+/* Login Styles */
+
+#login_outer {
+  display: table;
+  position: absolute;
+  background-image: url(https://s-media-cache-ak0.pinimg.com/564x/49/2e/dd/492edd38ce7000a98c7147525b1d2bf1.jpg);
+  height: 100%;
+  width: 100%;
+}
+
+#login_middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#login_inner {
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+#feedback {
+  font-style: italic;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+/* Content Style */
+
+.content {
+  background-color: white;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* General Styles */
+
+.centered_heading {
+  text-align: center;
+  letter-spacing: 4px;
+}
+
+.floating_block span {
+  display: inline-block;
+  margin: 0px 14px;
+}
+
+.floating_block label {
+  font-weight: bold;
+}
+
+.table_floating_block span{
+  display: inline-block;
+}
+
+/* Project Details Styles */
+
+.pd_comments .floating_block {
+  margin: 20px;
+}
+
+.justified {
+  display: flex;
+  justify-content: center;
+}
+
+/* About Style */
+
+.about p{
+  Text-align: center;
+}
+
+.about ul{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
