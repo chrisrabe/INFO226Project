@@ -1,29 +1,44 @@
 var app = angular.module('plunker', []);
 
 // This controller is used to switch between login page to main page
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', function ($scope) {
 
-  // Functions that control views
+  // Navigation functions of scope
 
-  $scope.view = 1; // page or content
-  $scope.tab = 1; // different tabs
+  // Changes the type's content
+  // If type is equal to "view", then it changes the web page
+  // If type is equal to "content", then it changes the content page tabs
+  // If type is equal to "project", then it changes the project details tab
+  $scope.setContent = function (type, newContent) {
+    if (type == 'view') {
+      setView(newContent);
+    } else if (type == 'content') {
+      setContent(newContent);
+    } else if (type == 'project') {
+      setTab(newContent);
+    }
+  };
 
-  // switches between views
-  $scope.setView = function(newView) {
-    $scope.view = newView;
+  // Returns true if tabNumber is equal to the currently set tab
+  // If type is equal to "view", then it checks the web page tab
+  // If type is equal to "content", then it checks the content page tab
+  // If type is equal to "project", then it checks the project details tab
+  $scope.isSet = function (type, tabNum) {
+    if (type == 'view') {
+      return getView() == tabNum;
+    } else if (type == 'content') {
+      return getContent() == tabNum;
+    } else if (type == 'project') {
+      return getTab() == tabNum;
+    }
   };
-  // returns true if the view number is equal to the current view
-  $scope.viewIsSet = function(viewNum) {
-    return $scope.view == viewNum;
+  
+  // goes to project details
+  $scope.toDetails = function () {
+    setTab(1);
+    setContent(4);
   };
-  // switches between tabs
-  $scope.setTab = function(newTab) {
-    $scope.tab = newTab;
-  };
-  // changes the view from the tab
-  $scope.isSet = function(tabNum) {
-    return $scope.tab == tabNum;
-  };
+
 
   // Log in, Log Out
 
@@ -53,12 +68,12 @@ app.controller('MainCtrl', function($scope) {
   }];
 
   // resets all the fields
-  $scope.logOut = function() {
-    $scope.setTab(1);
-    $scope.setView(1);
+  $scope.logOut = function () {
+    setContent(1);
+    setView(1);
   };
 
-  $scope.logIn = function() {
+  $scope.logIn = function () {
     if ($scope.username == "" && $scope.password == "") {
       $scope.feedback = "Please input username and password";
     } else if ($scope.username == "") {
@@ -71,7 +86,7 @@ app.controller('MainCtrl', function($scope) {
     }
   };
 
-  $scope.validateFields = function(username, password) {
+  $scope.validateFields = function (username, password) {
     var validLogin = false;
     var users = $scope.user_list;
     for (i = 0; i < users.length; i++) {
@@ -82,13 +97,13 @@ app.controller('MainCtrl', function($scope) {
       }
     }
     if (validLogin) {
-      $scope.setView(2);
-    }else {
+      $scope.setContent('view', 2);
+    } else {
       $scope.feedback = "Invalid username and password";
     }
   };
 
-  $scope.clearFields = function() {
+  $scope.clearFields = function () {
     $scope.username = "";
     $scope.password = "";
     $scope.user = {
@@ -98,32 +113,9 @@ app.controller('MainCtrl', function($scope) {
     };
   };
 
-  // Building Form Control
-
-  $scope.toDetails = function() {
-    $scope.pdTab = 1;
-    $scope.setTab(4);
-  };
-
-  // Project Details Control
-
-  $scope.pdTab = 1;
-
-  $scope.setPDTab = function(newTab) {
-    $scope.pdTab = newTab;
-  };
-  $scope.pdIsSet = function(tabNum) {
-    return $scope.pdTab == tabNum;
-  };
-  $scope.toBuildingForm = function() {
-    $scope.pdTab = 1; // reset tab
-    $scope.setTab(3); // go to building form
-    // should consider dummy values in sprint 2
-  };
-
   // Works Checkbox control
 
-  $scope.isDone = function(status) {
+  $scope.isDone = function (status) {
     return status == 'Done';
   };
 

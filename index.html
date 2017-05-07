@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="buttons.css" />
   <link rel="stylesheet" href="comments.css" />
   <script data-require="angular.js@1.0.x" src="https://code.angularjs.org/1.0.8/angular.js" data-semver="1.0.8"></script>
+  <script src="navigation.js"></script>
   <script src="app.js"></script>
 </head>
 
@@ -20,7 +21,7 @@
 
   <!-- LOGIN PAGE (View 1) -->
 
-  <div class="login" ng-show="viewIsSet(1)">
+  <div class="login" ng-show="isSet('view',1)">
     <div id="login_outer">
       <div id="login_middle">
         <h1 class="centered_heading">Happy Building Company</h1>
@@ -50,17 +51,17 @@
 
   <!-- Content Page (View 2) -->
 
-  <div class="content" ng-show="viewIsSet(2)">
+  <div class="content" ng-show="isSet('view',2)">
 
     <!-- Navigation Bar -->
 
     <div>
       <ul class="nav">
-        <li ng-class="{active:isSet(1)}" class="nav-item">
-          <a href ng-click="setTab(1)">Building Directory</a>
+        <li ng-class="{active:isSet('content',1)}" class="nav-item">
+          <a href ng-click="setContent('content',1)">Building Directory</a>
         </li>
-        <li ng-class="{active:isSet(2)}" class="nav-item">
-          <a href ng-click="setTab(2)">About</a>
+        <li ng-class="{active:isSet('content',2)}" class="nav-item">
+          <a href ng-click="setContent('content',2)">About</a>
         </li>
         <li class="active nav-item" style="float: right">
           <a href ng-click="logOut()">Log Out</a>
@@ -70,7 +71,7 @@
 
     <!-- BUILDING DIRECTORY (Tab 1) -->
 
-    <div class="b_dir" ng-show="isSet(1)">
+    <div class="b_dir" ng-show="isSet('content',1)">
       <div id="bd_outer">
         <div id="bd_middle">
           <h1 class="centered_heading">Building Directory</h1>
@@ -85,7 +86,7 @@
                 <td>{{entry.owner}}</td>
                 <td>{{entry.address}}</td>
                 <td>
-                  <input class="button" type="submit" value="View" ng-click="setTab(3)" />
+                  <input class="button" type="submit" value="View" ng-click="setContent('content',3)" />
                 </td>
               </tr>
             </table>
@@ -96,7 +97,7 @@
 
     <!-- ABOUT CONTENT (Tab 2) -->
 
-    <div class="about" ng-show="isSet(2)">
+    <div class="about" ng-show="isSet('content',2)">
 
       <h1 class="centered_heading">Company Information</h1>
 
@@ -120,7 +121,7 @@
 
     <!-- BUILDING FORM (Tab 3) -->
 
-    <div class="b_form" ng-show="isSet(3)">
+    <div class="b_form" ng-show="isSet('content',3)">
       <div id="bf_outer">
         <div id="bf_middle">
           <div id="bf_inner">
@@ -169,7 +170,7 @@
 
     <!-- PROJECT DETAILS (Tab 4) -->
 
-    <div class="proj_details" ng-show="isSet(4)">
+    <div class="proj_details" ng-show="isSet('content',4)">
       <div id="pd_outer">
         <div id="pd_middle">
           <div id="pd_inner">
@@ -179,27 +180,27 @@
 
             <div>
               <ul class="nav">
-                <li ng-class="{active:pdIsSet(1)}" class="nav-item">
-                  <a href ng-click="setPDTab(1)">About</a>
+                <li ng-class="{active:isSet('project',1)}" class="nav-item">
+                  <a href ng-click="setContent('project',1)">About</a>
                 </li>
-                <li ng-class="{active:pdIsSet(2)}" class="nav-item">
-                  <a href ng-click="setPDTab(2)">Contact</a>
+                <li ng-class="{active:isSet('project',2)}" class="nav-item">
+                  <a href ng-click="setContent('project',2)">Contact</a>
                 </li>
-                <li ng-class="{active:pdIsSet(3)}" class="nav-item">
-                  <a href ng-click="setPDTab(3)">Works</a>
+                <li ng-class="{active:isSet('project',3)}" class="nav-item">
+                  <a href ng-click="setContent('project',3)">Works</a>
                 </li>
-                <li ng-class="{active:pdIsSet(4)}" class="nav-item">
-                  <a href ng-click="setPDTab(4)">Comments</a>
+                <li ng-class="{active:isSet('project',4)}" class="nav-item">
+                  <a href ng-click="setContent('project',4)">Comments</a>
                 </li>
                 <li class="active nav-item">
-                  <a href ng-click="toBuildingForm()">Back</a>
+                  <a href ng-click="setContent('content',3)">Back</a>
                 </li>
               </ul>
             </div>
 
             <!-- About Content (PDTab 1) -->
 
-            <div class="pd_about" ng-show="pdIsSet(1)">
+            <div class="pd_about" ng-show="isSet('project',1)">
               <div class="floating_block">
                 <span>
                   <label>Project ID:</label>
@@ -251,7 +252,7 @@
 
             <!-- Contact Content (PDTab 2) -->
 
-            <div class="pd_contact" ng-show="pdIsSet(2)">
+            <div class="pd_contact" ng-show="isSet('project',2)">
               <div class="floating_block">
                 <span>
                   <label>Contractor:</label>
@@ -280,7 +281,7 @@
 
             <!-- Works Content (PDTab 3) -->
 
-            <div class="pd_works" ng-show="pdIsSet(3)">
+            <div class="pd_works" ng-show="isSet('project',3)">
               <h2 class="centered_heading">Works</h2>
               <table>
                 <tr>
@@ -298,7 +299,7 @@
 
             <!-- Comments Content (PDTab 4) -->
 
-            <div class="pd_comments" ng-show="pdIsSet(4)">
+            <div class="pd_comments" ng-show="isSet('project',4)">
               <div class="justified">
                 <div class="floating_block">
                   <span>
