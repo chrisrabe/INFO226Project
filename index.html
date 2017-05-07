@@ -13,11 +13,12 @@
   <link rel="stylesheet" href="buttons.css" />
   <link rel="stylesheet" href="comments.css" />
   <script data-require="angular.js@1.0.x" src="https://code.angularjs.org/1.0.8/angular.js" data-semver="1.0.8"></script>
+  <script src="authentication.js"></script>
   <script src="navigation.js"></script>
   <script src="app.js"></script>
 </head>
 
-<body ng-controller='MainCtrl'>
+<body ng-controller='MainCtrl' ng-init="init()">
 
   <!-- LOGIN PAGE (View 1) -->
 

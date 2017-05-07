@@ -41,34 +41,15 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // HTTP GET AND POST PROTOCOLS
 
-  
+  $scope.init = function () {
+    // Initialise User Data
+    $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error'); });
+  };
 
   // Log in, Log Out
 
   $scope.username = "";
   $scope.password = "";
-
-  $scope.user = {
-    login_name: "",
-    password: "",
-    usertype: ""
-  };
-
-  // User login dummy values
-
-  $scope.user_list = [{
-    login_name: 'chris',
-    password: 'password',
-    usertype: 'manager'
-  }, {
-    login_name: 'hannah',
-    password: 'password',
-    usertype: 'manager'
-  }, {
-    login_name: 'guest',
-    password: 'guest',
-    usertype: 'contractor'
-  }];
 
   // resets all the fields
   $scope.logOut = function () {
@@ -85,7 +66,12 @@ app.controller('MainCtrl', function ($scope, $http) {
       $scope.feedback = "Please input password";
     } else {
       $scope.feedback = "";
-      $scope.validateFields($scope.username, $scope.password);
+      if (authenticate($scope.username, $scope.password)) {
+        setUser($scope.username);
+        $scope.setContent('view', 2);
+      } else {
+        $scope.feedback = "Invalid username and password";
+      }
     }
   };
 
@@ -109,11 +95,8 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.clearFields = function () {
     $scope.username = "";
     $scope.password = "";
-    $scope.user = {
-      login_name: "",
-      password: "",
-      usertype: ""
-    };
+    $scope.feedback = "";
+    setUser(null);
   };
 
   // Works Checkbox control
@@ -121,8 +104,6 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.isDone = function (status) {
     return status == 'Done';
   };
-
-
 
   // Building Directory dummy values
 
