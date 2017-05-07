@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="comments.css" />
   <script data-require="angular.js@1.0.x" src="https://code.angularjs.org/1.0.8/angular.js" data-semver="1.0.8"></script>
   <script src="authentication.js"></script>
+  <script src="testhelper.js"></script>
   <script src="navigation.js"></script>
   <script src="app.js"></script>
 </head>
@@ -39,7 +40,7 @@
                 <input type="password" ng-model="password" />
                 <hr/>
                 <input class="button" type="submit" value="Log In" ng-click="logIn()" />
-                <input class="button" type="submit" value="Cancel" ng-click="clearFields()"/>
+                <input class="button" type="submit" value="Cancel" ng-click="clearFields()" />
                 <hr/>
                 <p id="feedback">{{feedback}}</p>
               </div>
@@ -102,11 +103,14 @@
 
       <h1 class="centered_heading">Company Information</h1>
 
-      <p>HappyBuildings is a project inspection firm working for the NZ government. Their job is to oversee the maintenance projects. HappyBuildings must track when, where and what has to be done, who is going to do it, and when works are expected to be
-        completed. HappyBuildings also make sure that all parties involved in a project are happy with it.
+      <p>HappyBuildings is a project inspection firm working for the NZ government. Their job is to oversee the maintenance
+        projects. HappyBuildings must track when, where and what has to be done, who is going to do it, and when works are
+        expected to be completed. HappyBuildings also make sure that all parties involved in a project are happy with it.
         <br>
-        <br> HappyBuildings do not plan or manage the projects, do not do the maintenance works, and also do not select the contractors that work on projects. They are third parties (in between building owners and contractors) focussed on due diligence, centralising
-        information, tracking how the projects are going, and identifying problems that may arise between the stakeholders. </p>
+        <br> HappyBuildings do not plan or manage the projects, do not do the maintenance works, and also do not select the
+        contractors that work on projects. They are third parties (in between building owners and contractors) focussed on
+        due diligence, centralising information, tracking how the projects are going, and identifying problems that may arise
+        between the stakeholders. </p>
 
       <h3 class="centered_heading">Contact Information</h3>
 

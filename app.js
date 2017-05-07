@@ -2,6 +2,8 @@ var app = angular.module('plunker', []);
 
 // This controller is used to switch between login page to main page
 app.controller('MainCtrl', function ($scope, $http) {
+  //Scope Variables
+  $scope.buildings = [];
 
   // Navigation functions of scope
 
@@ -45,7 +47,8 @@ app.controller('MainCtrl', function ($scope, $http) {
     // Initialise User Data
     $scope.username = "";
     $scope.password = "";
-    $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error'); });
+    $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error loading user list'); });
+    $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/building_dir.json').then(function success(response) { $scope.buildings = response.data.buildings; }, function error() { console.log('error loading building directory'); });
   };
 
   // LOGIN PAGE METHODS
