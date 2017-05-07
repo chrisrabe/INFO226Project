@@ -1,8 +1,7 @@
 var app = angular.module('plunker', []);
 
 // This controller is used to switch between login page to main page
-app.controller('MainCtrl', fu3nction($scope) {
-  // COMMENT CHANGE
+app.controller('MainCtrl', function($scope) {
 
   // Functions that control views
 
