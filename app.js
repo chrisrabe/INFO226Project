@@ -74,7 +74,7 @@ app.controller('MainCtrl', function ($scope, $http) {
       }
     }
   };
-
+  // resets all the fields
   $scope.clearFields = function () {
     $scope.username = "";
     $scope.password = "";
