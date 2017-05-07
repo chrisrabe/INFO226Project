@@ -1,1 +1,19 @@
-{"users":[{"LoginName":"chris","Password":"password","UserType":"manager"},{"LoginName":"hannah","Password":"password","UserType":"manager"},{"LoginName":"guest","Password":"guest","UserType":"contractor"},{"LoginName":"owner","Password":"owner","UserType":"owner"}]}
+{
+    "users": [{
+        "LoginName": "chris",
+        "Password": "password",
+        "UserType": "manager"
+    }, {
+        "LoginName": "hannah",
+        "Password": "password",
+        "UserType": "manager"
+    }, {
+        "LoginName": "guest",
+        "Password": "guest",
+        "UserType": "contractor"
+    }, {
+        "LoginName": "owner",
+        "Password": "owner",
+        "UserType": "owner"
+    }]
+}
