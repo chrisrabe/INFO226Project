@@ -43,20 +43,20 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   $scope.init = function () {
     // Initialise User Data
+    $scope.username = "";
+    $scope.password = "";
     $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error'); });
   };
 
-  // Log in, Log Out
-
-  $scope.username = "";
-  $scope.password = "";
+  // LOGIN PAGE METHODS
 
   // resets all the fields
   $scope.logOut = function () {
+    $scope.clearFields();
     setContent(1);
     setView(1);
   };
-
+  // verifies the username and password to the server
   $scope.logIn = function () {
     if ($scope.username == "" && $scope.password == "") {
       $scope.feedback = "Please input username and password";
@@ -72,23 +72,6 @@ app.controller('MainCtrl', function ($scope, $http) {
       } else {
         $scope.feedback = "Invalid username and password";
       }
-    }
-  };
-
-  $scope.validateFields = function (username, password) {
-    var validLogin = false;
-    var users = $scope.user_list;
-    for (i = 0; i < users.length; i++) {
-      var user = users[i];
-      if (user.login_name == username && user.password == password) {
-        validLogin = true;
-        break;
-      }
-    }
-    if (validLogin) {
-      $scope.setContent('view', 2);
-    } else {
-      $scope.feedback = "Invalid username and password";
     }
   };
 
