@@ -1,7 +1,7 @@
 var app = angular.module('plunker', []);
 
 // This controller is used to switch between login page to main page
-app.controller('MainCtrl', function ($scope) {
+app.controller('MainCtrl', function ($scope, $http) {
 
   // Navigation functions of scope
 
@@ -32,13 +32,16 @@ app.controller('MainCtrl', function ($scope) {
       return getTab() == tabNum;
     }
   };
-  
+
   // goes to project details
   $scope.toDetails = function () {
     setTab(1);
     setContent(4);
   };
 
+  // HTTP GET AND POST PROTOCOLS
+
+  
 
   // Log in, Log Out
 
