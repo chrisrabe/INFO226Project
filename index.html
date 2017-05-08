@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="comments.css" />
   <script data-require="angular.js@1.0.x" src="https://code.angularjs.org/1.0.8/angular.js" data-semver="1.0.8"></script>
   <script src="authentication.js"></script>
+  <script src="datahandler.js"></script>
   <script src="testhelper.js"></script>
   <script src="navigation.js"></script>
   <script src="app.js"></script>
@@ -90,7 +91,7 @@
                 <td>{{entry.Owner}}</td>
                 <td>{{entry.Address}}</td>
                 <td>
-                  <input class="button" type="submit" value="View" ng-click="setContent('content',3)" />
+                  <input class="button" type="submit" value="View" ng-click="toForm(entry.ID)" />
                 </td>
               </tr>
             </table>
@@ -135,10 +136,26 @@
             <h1 class="centered_heading">Building Information</h1>
             <div class="floating_block">
               <span>
+                <label>Building ID:</label>
+              </span>
+              <span>
+                <p>{{building.ID}}</p>
+              </span>
+            </div>
+            <div class="floating_block">
+              <span>
+                <label>Address:</label>
+              </span>
+              <span>
+                <p>{{building.Address}}</p>
+              </span>
+            </div>
+            <div class="floating_block">
+              <span>
                 <label>Date of Construction:</label>
               </span>
               <span>
-                <p>dd/mm/yyyy</p>
+                <p>{{building.ConstructionDate}}</p>
               </span>
             </div>
             <div class="floating_block">
@@ -146,7 +163,7 @@
                 <label>Type of Building:</label>
               </span>
               <span>
-                <p>Apartment</p>
+                <p>{{building.BuildingType}}</p>
               </span>
             </div>
             <div class="proj_table">

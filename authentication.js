@@ -1,4 +1,4 @@
-var globalUser = { username: "", password: "", type: "" };
+var globalUser = null;
 var user_list = [];
 
 // Getters and Setters
@@ -30,6 +30,13 @@ var setList = function (newList) {
 };
 
 // Verification Methods
+
+var isManager = function () {
+    if (globalUser == null) {
+        return false;
+    }
+    return globalUser.UserType == 'manager';
+};
 
 var authenticate = function (username, password) {
     var valid = false;
