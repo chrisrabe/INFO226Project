@@ -6,6 +6,11 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.buildings = [];
   $scope.building = null;
 
+  $scope.printBuilding = function () {
+    console.log($scope.building);
+    console.log($scope.buildings[i]);
+  };
+
   // Navigation functions of scope
 
   // Changes the type's content
@@ -42,12 +47,21 @@ app.controller('MainCtrl', function ($scope, $http) {
     setContent(4);
   };
 
+  // goes back to the building form
+  $scope.backToForm = function () {
+    if (isManager()) {
+      $scope.setContent('content', 5); // change the view to building form editor
+    } else {
+      $scope.setContent('content', 3); // change the view to building form
+    }
+  };
+
   // navigates to the building form with the specified id
   $scope.toForm = function (id) {
     setBuilding($scope.buildings, id);
     $scope.building = getBuilding(); // change the data inside the building form
     // Need to add update to project list
-    $scope.setContent('content', 3); // change the view to building form
+    $scope.backToForm();
   };
 
   // HTTP GET AND POST PROTOCOLS

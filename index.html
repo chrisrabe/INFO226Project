@@ -217,7 +217,7 @@
                   <a href ng-click="setContent('project',4)">Comments</a>
                 </li>
                 <li class="active nav-item">
-                  <a href ng-click="setContent('content',3)">Back</a>
+                  <a href ng-click="backToForm()">Back</a>
                 </li>
               </ul>
             </div>
@@ -362,30 +362,42 @@
         <div id="bf_middle">
           <div id="bf_inner">
             <h1 class="centered_heading">Building Information</h1>
-            <div class="floating_block">
-              <span>
-                <label>Date of Construction:</label>
-              </span>
-              <span>
-                  <textarea placeholder="dd" rows="1" cols="2" style="resize: none"></textarea>
-              </span> /
-              <span>
-                  <textarea placeholder="mm" rows="1" cols="2" style="resize: none"></textarea>
-              </span> /
-              <span>
-                  <textarea placeholder="yyyy" rows="1" cols="2" style="resize: none"></textarea>
-              </span>
-            </div>
-            <br>
-            <div class="floating_block">
-              <span>
-                <label>Type of Building:</label>
-              </span>
-              <span>
-                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
-              </span>
-
-            </div>
+            <form>
+              <div class="floating_block">
+                <span>
+                  <label>Building ID:</label>
+                </span>
+                <span>
+                  <p>{{building.ID}}</p>
+                </span>
+              </div>
+              <div class="floating_block">
+                <span>
+                  <label>Address:</label>
+                </span>
+                <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.Address"></textarea>
+                </span>
+              </div>
+              <div class="floating_block">
+                <span>
+                  <label>Date of Construction:</label>
+                </span>
+                <span>
+                  <input type="date" ng-model='building.ConstructionDate'/>
+                </span>
+              </div>
+              <br>
+              <div class="floating_block">
+                <span>
+                  <label>Type of Building:</label>
+                </span>
+                <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.BuildingType"></textarea>
+                </span>
+                <input class="button" type="submit" value="Save Changes" />
+              </div>
+            </form>
             <div class="proj_table">
               <h2 class="centered_heading">Projects</h2>
               <table>
@@ -400,8 +412,6 @@
                   <td>
                     <div class="table_floating_block">
                       <span>{{entry.schedule}}</span>
-                      <span style="float: right"><input class="button" type="submit" value="Archive" /></span>
-                      <span style="float: right"><input class="button" type="submit" value="Edit" ng-click="toDetails()"/></span>
                       <span style="float: right"><input class="button" type="submit" value="Delete" /></span>
                       <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails()"/></span>
                     </div>
@@ -439,7 +449,7 @@
                   <a href ng-click="setContent('project',4)">Comments</a>
                 </li>
                 <li class="active nav-item">
-                  <a href ng-click="setContent('content',3)">Back</a>
+                  <a href ng-click="backToForm()">Back</a>
                 </li>
               </ul>
             </div>
@@ -484,14 +494,8 @@
                   <label>Start Date:</label>
                 </span>
                 <span>
-                  <textarea placeholder="dd" rows="1" cols="2" style="resize: none"></textarea>
-              </span> /
-                <span>
-                  <textarea placeholder="mm" rows="1" cols="2" style="resize: none"></textarea>
-              </span> /
-                <span>
-                  <textarea placeholder="yyyy" rows="1" cols="2" style="resize: none"></textarea>
-              </span>
+                  <input type="date"/>
+                </span>
               </div>
               <br>
               <div class="floating_block">
@@ -499,14 +503,8 @@
                   <label>End Date:</label>
                 </span>
                 <span>
-                  <textarea placeholder="dd" rows="1" cols="2" style="resize: none"></textarea>
-              </span> /
-                <span>
-                  <textarea placeholder="mm" rows="1" cols="2" style="resize: none"></textarea>
-              </span> /
-                <span>
-                  <textarea placeholder="yyyy" rows="1" cols="2" style="resize: none"></textarea>
-              </span>
+                  <input type="date"/>
+                </span>
               </div>
             </div>
 
@@ -527,7 +525,8 @@
                 <span>
                   <label>Contact Person:</label>
                 </span>
-                <textarea placeholder="" rows=" 1 " cols="30 " style="resize: none "></textarea>
+                <span>
+                  <textarea placeholder="" rows=" 1 " cols="30 " style="resize: none "></textarea>
                 </span>
               </div>
               <br>
@@ -535,7 +534,8 @@
                 <span>
                   <label>Project Manager:</label>
                 </span>
-                <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
                 </span>
               </div>
             </div>
