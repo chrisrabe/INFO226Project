@@ -80,13 +80,15 @@
           <div id="bd_inner">
             <table>
               <tr>
+                <th>ID</th>
                 <th>Owner</th>
                 <th>Address</th>
                 <th>View</th>
               </tr>
-              <tr ng-repeat="entry in bdEntries">
-                <td>{{entry.owner}}</td>
-                <td>{{entry.address}}</td>
+              <tr ng-repeat="entry in buildings">
+                <td>{{entry.ID}}</td>
+                <td>{{entry.Owner}}</td>
+                <td>{{entry.Address}}</td>
                 <td>
                   <input class="button" type="submit" value="View" ng-click="setContent('content',3)" />
                 </td>
@@ -335,6 +337,10 @@
         </div>
       </div>
     </div>
+
+    <!-- EDITOR VIEW BUILDING FORM -->
+
+    <!-- EDITOR VIEW PROJECT DETAILS -->
 
   </div>
 

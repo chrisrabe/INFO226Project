@@ -91,28 +91,6 @@ app.controller('MainCtrl', function ($scope, $http) {
     return status == 'Done';
   };
 
-  // Building Directory dummy values
-
-  $scope.bdEntries = [{
-    owner: 'Hannah',
-    address: 'Kelburn'
-  }, {
-    owner: 'Chris',
-    address: 'Upper Hutt'
-  }, {
-    owner: 'Hannah',
-    address: 'Kelburn'
-  }, {
-    owner: 'Chris',
-    address: 'Kelburn'
-  }, {
-    owner: 'Hannah',
-    address: 'Kelburn'
-  }, {
-    owner: 'Chris',
-    address: 'Kelburn'
-  }];
-
   // Building Form Dummy Value
   $scope.bfEntries = [{
     id: '1',
