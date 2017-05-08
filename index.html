@@ -339,7 +339,247 @@
     </div>
 
     <!-- EDITOR VIEW BUILDING FORM -->
+ <!-- BUILDING FORM (Tab 5) -->
 
+    <div class="b_form_edit" ng-show="isSet('content',5)">
+      <div id="bf_outer">
+        <div id="bf_middle">
+          <div id="bf_inner">
+            <h1 class="centered_heading">Building Information</h1>
+            <div class="floating_block">
+              <span>
+                <label>Date of Construction:</label>
+              </span>
+              <span>
+                  <textarea placeholder="dd" rows="1" cols="2" style="resize: none"></textarea>
+              </span> /
+              <span>
+                  <textarea placeholder="mm" rows="1" cols="2" style="resize: none"></textarea>
+              </span> /
+              <span>
+                  <textarea placeholder="yyyy" rows="1" cols="2" style="resize: none"></textarea>
+              </span>
+            </div>
+            <br>
+            <div class="floating_block">
+              <span>
+                <label>Type of Building:</label>
+              </span>
+              <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+              </span>
+
+            </div>
+            <div class="proj_table">
+              <h2 class="centered_heading">Projects</h2>
+              <table>
+                <tr>
+                  <th>Project ID</th>
+                  <th>Name</th>
+                  <th>Schedule</th>
+                </tr>
+                <tr ng-repeat="entry in bfEntries">
+                  <td>{{entry.id}}</td>
+                  <td>{{entry.name}}</td>
+                  <td>
+                    <div class="table_floating_block">
+                      <span>{{entry.schedule}}</span>
+                      <span style="float: right"><input class="button" type="submit" value="Edit" ng-click="toDetails()"/></span>
+                      <span style="float: right"><input class="button" type="submit" value="Delete" /></span>
+                      <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails()"/></span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT DETAILS (Tab 6) -->
+
+    <div class="proj_details_edit" ng-show="isSet('content',6)">
+      <div id="pd_outer">
+        <div id="pd_middle">
+          <div id="pd_inner">
+            <h1 class="centered_heading">Project Details</h1>
+
+            <!-- Project Details Navigation Bar -->
+
+             <div>
+              <ul class="nav">
+                <li ng-class="{active:isSet('project',1)}" class="nav-item">
+                  <a href ng-click="setContent('project',1)">About</a>
+                </li>
+                <li ng-class="{active:isSet('project',2)}" class="nav-item">
+                  <a href ng-click="setContent('project',2)">Contact</a>
+                </li>
+                <li ng-class="{active:isSet('project',3)}" class="nav-item">
+                  <a href ng-click="setContent('project',3)">Works</a>
+                </li>
+                <li ng-class="{active:isSet('project',4)}" class="nav-item">
+                  <a href ng-click="setContent('project',4)">Comments</a>
+                </li>
+                <li class="active nav-item">
+                  <a href ng-click="setContent('content',3)">Back</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- About Content (PDTab 1) -->
+
+            <div class="pd_about" ng-show="isSet('project',1)">
+              <div class="floating_block">
+                <span>
+                  <label>Project ID:</label>
+                </span>
+                <span>
+                  <p>1</p>
+                </span>
+              </div>
+              <div class="floating_block">
+                <span>
+                  <label>Project Name:</label>
+                </span>
+                <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                </span>
+              </div>
+              <div class="floating_block">
+                <span>
+                  <label>Status</label>
+                </span>
+                <span>
+                  <p></p>
+                  <select>
+                    <option value="1">Done</option>
+                    <option value="2">On-Going</option>
+                    <option value="3">Scheduled</option>
+                    <option value="4">Postponed</option>
+                    <option value="5">Cancelled</option>
+                  </select>
+                </span>
+              </div>
+              <br>
+              <div class="floating_block">
+                <span>
+                  <label>Start Date:</label>
+                </span>
+                <span>
+                  <textarea placeholder="dd" rows="1" cols="2" style="resize: none"></textarea>
+              </span> /
+                <span>
+                  <textarea placeholder="mm" rows="1" cols="2" style="resize: none"></textarea>
+              </span> /
+                <span>
+                  <textarea placeholder="yyyy" rows="1" cols="2" style="resize: none"></textarea>
+              </span>
+              </div>
+              <br>
+              <div class="floating_block">
+                <span>
+                  <label>End Date:</label>
+                </span>
+                <span>
+                  <textarea placeholder="dd" rows="1" cols="2" style="resize: none"></textarea>
+              </span> /
+                <span>
+                  <textarea placeholder="mm" rows="1" cols="2" style="resize: none"></textarea>
+              </span> /
+                <span>
+                  <textarea placeholder="yyyy" rows="1" cols="2" style="resize: none"></textarea>
+              </span>
+              </div>
+            </div>
+
+            <!-- Contact Content (PDTab 2) -->
+
+            <div class="pd_contact" ng-show="isSet('project',2)">
+             <br>
+              <div class="floating_block">
+                <span>
+                  <label>Contractor:</label>
+                </span>
+                <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                </span>
+              </div>
+              <br>
+              <div class="floating_block">
+                <span>
+                  <label>Contact Person:</label>
+                </span>
+                <textarea placeholder="" rows=" 1 " cols="30 " style="resize: none "></textarea>
+                </span>
+              </div>
+              <br>
+              <div class="floating_block ">
+                <span>
+                  <label>Project Manager:</label>
+                </span>
+                <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                </span>
+              </div>
+            </div>
+
+            <!-- Works Content (PDTab 3) -->
+
+            <div class="pd_works" ng-show="isSet('project',3)">
+              <h2 class="centered_heading">Works</h2>
+              <table>
+                <tr>
+                  <th>Status</th>
+                  <th>Type</th>
+                  <th>Delete</th>
+                </tr>
+                <tr ng-repeat="work in works">
+                  <td>
+                    <input type="checkbox" ng-checked="isDone(work.status)">
+                  </td>
+                  <td>{{work.type}}</td>
+                  <td>
+                    <input class="button" type="submit" value="Delete" ng-click="setTab(3)" />
+                  </td>
+                </tr>
+              </table>
+              <br/>
+              <input class="button" type="submit" value="Add" ng-click="setTab(3)" />
+            </div>
+
+            <!-- Comments Content (PDTab 4) -->
+
+            <div class="pd_comments" ng-show="isSet('project',4)">
+              <div class="justified">
+                <div class="floating_block">
+                  <span>
+                  <textarea placeholder="Enter comment here..." rows="3" cols="50" style="resize: none"></textarea>
+                </span>
+                </div>
+              </div>
+              <div class="justified">
+                <input class="button" type="submit" value="Post" />
+              </div>
+              <h2 class="centered_heading">Comments</h2>
+              <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">
+                <ul class="comments">
+                  <li ng-repeat="comment in comments">
+                    <span>
+                  <p class="author">{{comment.author}}</p>
+                  <p class="message">{{comment.text}}</p>
+                  <div class="floating_block">
+                    <input class="button" type="submit" value="Edit" />
+                    <input class="button" type="submit" value="Delete" />
+                  </div>
+                  </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- EDITOR VIEW PROJECT DETAILS -->
 
   </div>
