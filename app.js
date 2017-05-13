@@ -5,6 +5,7 @@ app.controller('MainCtrl', function ($scope, $http) {
   //Scope Variables
   $scope.buildings = [];
   $scope.building = null;
+  $scope.project = null;
 
   $scope.printBuilding = function () {
     console.log($scope.building);
@@ -44,7 +45,11 @@ app.controller('MainCtrl', function ($scope, $http) {
   // goes to project details
   $scope.toDetails = function () {
     setTab(1);
-    setContent(4);
+    if (isManager()) {
+      setContent(6);
+    } else {
+      setContent(4);
+    }
   };
 
   // goes back to the building form

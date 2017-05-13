@@ -1,3 +1,5 @@
+// This script file contains all the user and password verification functions
+
 var globalUser = null;
 var user_list = [];
 

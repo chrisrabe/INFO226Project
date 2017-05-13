@@ -2,6 +2,7 @@
 // and provides methods which link the project details information to the building
 
 var projects = [];
+var project = null; // project which the project form displays
 var building = null; // building which the building form displays
 
 // returns the building information which the building form displays
