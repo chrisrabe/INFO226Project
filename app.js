@@ -6,6 +6,7 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.buildings = [];
   $scope.building = null;
   $scope.project = null;
+  $scope.projects = [];
 
   // Data Update Methods
 
@@ -46,7 +47,9 @@ app.controller('MainCtrl', function ($scope, $http) {
   };
 
   // goes to project details
-  $scope.toDetails = function () {
+  $scope.toDetails = function (id) {
+    setProject(id);
+    $scope.project = getProject();
     setTab(1);
     if (isManager()) {
       setContent(6);
@@ -68,7 +71,7 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.toForm = function (id) {
     setBuilding($scope.buildings, id);
     $scope.building = getBuilding(); // change the data inside the building form
-    // Need to add update to project list
+    $scope.projects = getProjects($scope.building);  // update to project list
     $scope.backToForm();
   };
   // navigates back to the building directory
@@ -84,6 +87,7 @@ app.controller('MainCtrl', function ($scope, $http) {
     $scope.password = "";
     $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error loading user list'); });
     $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/building_dir.json').then(function success(response) { $scope.buildings = response.data.buildings; }, function error() { console.log('error loading building directory'); });
+    setProjects(createProjects());
   };
 
   // LOGIN PAGE METHODS
@@ -125,29 +129,6 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.isDone = function (status) {
     return status.toLowerCase() == 'done';
   };
-
-  // Building Form Dummy Value
-  $scope.bfEntries = [{
-    id: '1',
-    name: 'Scaffolding and Painting',
-    schedule: 'dd/mm/yyyy'
-  }, {
-    id: '2',
-    name: 'Roof Construction',
-    schedule: 'dd/mm/yyyy'
-  }, {
-    id: '3',
-    name: 'Wall Construction',
-    schedule: 'dd/mm/yyyy'
-  }, {
-    id: '4',
-    name: 'Window Installation',
-    schedule: 'dd/mm/yyyy'
-  }, {
-    id: '5',
-    name: 'Plumbing',
-    schedule: 'dd/mm/yyyy'
-  }];
 
   // Works Dummy Values
   $scope.works = [{

@@ -45,9 +45,33 @@ var getProject = function () {
     return project;
 };
 
+var setProject = function (id) {
+    // search the projects with the specified id
+    for (i = 0; i < projects.length; i++) {
+        var item = projects[i];
+        if (item.ProjectID == id) {
+            project = item;
+            break;
+        }
+    }
+}
+
 // sets the projects array in the data handler
 var setProjects = function (newProjects) {
     projects = newProjects;
+};
+
+// retrieves all the projects related to the building
+var getProjects = function (building) {
+    var results = []; // storage for projects related to building
+    // find all the projects related to the building in the array
+    for (i = 0; i < projects.length; i++) {
+        var item = projects[i];
+        if (item.BuildingID == building.ID) {
+            results.push(item);
+        }
+    }
+    return results;
 };
 
 // Adds the new project into the array

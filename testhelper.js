@@ -18,7 +18,7 @@ var printObject = function (object) {
     }
 };
 
-var getProjects = function () {
+var createProjects = function () {
     return [{
     ProjectID: "1",
     Name: "Scaffolding and painting.",
