@@ -7,9 +7,12 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.building = null;
   $scope.project = null;
 
-  $scope.printBuilding = function () {
-    console.log($scope.building);
-    console.log($scope.buildings[i]);
+  // Data Update Methods
+
+  $scope.updateBuilding = function () {
+    var newBuilding = $scope.building;
+    updateBuilding($scope.buildings, newBuilding);
+    // NOTE: Post the new building information to the server
   };
 
   // Navigation functions of scope
@@ -116,7 +119,7 @@ app.controller('MainCtrl', function ($scope, $http) {
   // Works Checkbox control
 
   $scope.isDone = function (status) {
-    return status == 'Done';
+    return status.toLowerCase() == 'done';
   };
 
   // Building Form Dummy Value
