@@ -396,6 +396,7 @@
                   <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.BuildingType"></textarea>
                 </span>
                 <input class="button" type="submit" value="Save Changes" />
+             <input class="button" type="submit" value="Add Project" />
               </div>
             </form>
             <div class="proj_table">
@@ -447,6 +448,9 @@
                 </li>
                 <li ng-class="{active:isSet('project',4)}" class="nav-item">
                   <a href ng-click="setContent('project',4)">Comments</a>
+                </li>
+                <li class="nav-item">
+                  <a href>Save Changes</a>
                 </li>
                 <li class="active nav-item">
                   <a href ng-click="backToForm()">Back</a>
