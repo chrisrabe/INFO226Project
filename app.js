@@ -2,11 +2,14 @@ var app = angular.module('plunker', []);
 
 // This controller is used to switch between login page to main page
 app.controller('MainCtrl', function ($scope, $http) {
-  //Scope Variables
+  // Scope Variables
   $scope.buildings = [];
   $scope.building = null;
   $scope.project = null;
   $scope.projects = [];
+  // For editor view of project details
+  $scope.statusOptions = ["done", "on-going", "scheduled", "postponed", "cancelled"];
+  $scope.workOptions = ["done", "on-going"];
 
   // Data Update Methods
 
@@ -129,43 +132,4 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.isDone = function (status) {
     return status.toLowerCase() == 'done';
   };
-
-  // Works Dummy Values
-  $scope.works = [{
-    type: 'Scaffolding',
-    status: 'Done'
-  }, {
-    type: 'Painting',
-    status: 'On-Going'
-  }];
-
-  // Comments dummy values
-  $scope.comments = [{
-    author: 'Adele',
-    text: 'Hello from the other side'
-  }, {
-    author: 'Adele',
-    text: 'I must have called a thousand times'
-  }, {
-    author: 'Adele',
-    text: 'To tell you I\'m sorry for everything that I\'ve done'
-  }, {
-    author: 'Adele',
-    text: 'But when I call you never seem to be home'
-  }, {
-    author: 'Adele',
-    text: 'Hello from the outside'
-  }, {
-    author: 'Adele',
-    text: 'At least I can say that I\'ve tried'
-  }, {
-    author: 'Adele',
-    text: 'To tell you I\'m sorry for breaking your heart'
-  }, {
-    author: 'Adele',
-    text: 'But it don\'t matter. It clearly doesn\'t tear you apart anymore'
-  }, {
-    author: 'Chris',
-    text: 'OMG SHUT UP ADELE'
-  }];
 });

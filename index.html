@@ -230,7 +230,7 @@
                   <label>Project ID:</label>
                 </span>
                 <span>
-                  <p>1</p>
+                  <p>{{project.ProjectID}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -238,7 +238,7 @@
                   <label>Project Name:</label>
                 </span>
                 <span>
-                  <p>Scaffolding and Painting</p>
+                  <p>{{project.Name}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -246,14 +246,7 @@
                   <label>Status</label>
                 </span>
                 <span>
-                  <p></p>
-                  <select>
-                    <option value="1">Done</option>
-                    <option value="2">On-Going</option>
-                    <option value="3">Scheduled</option>
-                    <option value="4">Postponed</option>
-                    <option value="5">Cancelled</option>
-                  </select>
+                  <p>{{project.Status}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -261,7 +254,7 @@
                   <label>Start Date:</label>
                 </span>
                 <span>
-                  <p>dd / mm / yyyy</p>
+                  <p>{{project.StartDate}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -269,7 +262,7 @@
                   <label>End Date:</label>
                 </span>
                 <span>
-                  <p>dd / mm / yyyy</p>
+                  <p>{{project.EndDate}}</p>
                 </span>
               </div>
             </div>
@@ -282,7 +275,7 @@
                   <label>Contractor:</label>
                 </span>
                 <span>
-                  <p>Victoria University of Wellington</p>
+                  <p>{{project.Contractor}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -290,7 +283,7 @@
                   <label>Contact Person:</label>
                 </span>
                 <span>
-                  <p>Hannah Van Den Kerchof</p>
+                  <p>{{project.ContactPerson}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -298,7 +291,7 @@
                   <label>Project Manager:</label>
                 </span>
                 <span>
-                  <p>Hannah Van Den Kerchof</p>
+                  <p>{{project.ProjectManager}}</p>
                 </span>
               </div>
             </div>
@@ -312,11 +305,11 @@
                   <th>Status</th>
                   <th>Type</th>
                 </tr>
-                <tr ng-repeat="work in works">
+                <tr ng-repeat="work in project.Works">
                   <td>
-                    <input type="checkbox" ng-checked="isDone(work.status)">
+                    <input type="checkbox" ng-checked="isDone(work.Status)" disabled>
                   </td>
-                  <td>{{work.type}}</td>
+                  <td>{{work.TypeOfWork}}</td>
                 </tr>
               </table>
             </div>
@@ -337,10 +330,10 @@
               <h2 class="centered_heading">Comments</h2>
               <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">
                 <ul class="comments">
-                  <li ng-repeat="comment in comments">
+                  <li ng-repeat="comment in project.Comments">
                     <span>
-                  <p class="author">{{comment.author}}</p>
-                  <p class="message">{{comment.text}}</p>
+                  <p class="author">{{comment.Author}}</p>
+                  <p class="message">{{comment.Text}}</p>
                   <div class="floating_block">
                     <input class="button" type="submit" value="Edit" />
                     <input class="button" type="submit" value="Delete" />
@@ -466,7 +459,7 @@
                   <label>Project ID:</label>
                 </span>
                 <span>
-                  <p>1</p>
+                  <p>{{project.ProjectID}}</p>
                 </span>
               </div>
               <div class="floating_block">
@@ -474,7 +467,7 @@
                   <label>Project Name:</label>
                 </span>
                 <span>
-                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="project.Name"></textarea>
                 </span>
               </div>
               <div class="floating_block">
@@ -483,13 +476,7 @@
                 </span>
                 <span>
                   <p></p>
-                  <select>
-                    <option value="1">Done</option>
-                    <option value="2">On-Going</option>
-                    <option value="3">Scheduled</option>
-                    <option value="4">Postponed</option>
-                    <option value="5">Cancelled</option>
-                  </select>
+                  <select ng-model="project.Status" ng-options="x for x in statusOptions"></select>
                 </span>
               </div>
               <br>
@@ -498,7 +485,7 @@
                   <label>Start Date:</label>
                 </span>
                 <span>
-                  <input type="date"/>
+                  <input type="date" ng-model="project.StartDate"/>
                 </span>
               </div>
               <br>
@@ -507,7 +494,7 @@
                   <label>End Date:</label>
                 </span>
                 <span>
-                  <input type="date"/>
+                  <input type="date" ng-model="project.EndDate"/>
                 </span>
               </div>
             </div>
@@ -521,7 +508,7 @@
                   <label>Contractor:</label>
                 </span>
                 <span>
-                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="project.Contractor"></textarea>
                 </span>
               </div>
               <br>
@@ -530,7 +517,7 @@
                   <label>Contact Person:</label>
                 </span>
                 <span>
-                  <textarea placeholder="" rows=" 1 " cols="30 " style="resize: none "></textarea>
+                  <textarea placeholder="" rows=" 1 " cols="30 " style="resize: none" ng-model="project.ContactPerson"></textarea>
                 </span>
               </div>
               <br>
@@ -539,7 +526,7 @@
                   <label>Project Manager:</label>
                 </span>
                 <span>
-                  <textarea placeholder="" rows="1" cols="30" style="resize: none"></textarea>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="project.ProjectManager"></textarea>
                 </span>
               </div>
             </div>
@@ -554,11 +541,11 @@
                   <th>Type</th>
                   <th>Delete</th>
                 </tr>
-                <tr ng-repeat="work in works">
+                <tr ng-repeat="work in project.Works">
                   <td>
-                    <input type="checkbox" ng-checked="isDone(work.status)">
+                    <select ng-model="work.Status" ng-options="x for x in workOptions"></select>
                   </td>
-                  <td>{{work.type}}</td>
+                  <td>{{work.TypeOfWork}}</td>
                   <td>
                     <input class="button" type="submit" value="Delete" ng-click="setTab(3)" />
                   </td>
@@ -584,10 +571,10 @@
               <h2 class="centered_heading">Comments</h2>
               <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">
                 <ul class="comments">
-                  <li ng-repeat="comment in comments">
+                  <li ng-repeat="comment in project.Comments">
                     <span>
-                  <p class="author">{{comment.author}}</p>
-                  <p class="message">{{comment.text}}</p>
+                  <p class="author">{{comment.Author}}</p>
+                  <p class="message">{{comment.Text}}</p>
                   <div class="floating_block">
                     <input class="button" type="submit" value="Edit" />
                     <input class="button" type="submit" value="Delete" />

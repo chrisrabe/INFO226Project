@@ -20,7 +20,7 @@ var setBuilding = function (buildings, id) {
     for (i = 0; i < buildings.length; i++) {
         var item = buildings[i];
         if (item.ID == id) {
-            building = clone(buildings[i]);
+            building = clone(item);
             break;
         }
     }
@@ -50,7 +50,7 @@ var setProject = function (id) {
     for (i = 0; i < projects.length; i++) {
         var item = projects[i];
         if (item.ProjectID == id) {
-            project = item;
+            project = clone(item);
             break;
         }
     }
