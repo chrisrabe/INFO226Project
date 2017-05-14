@@ -99,7 +99,8 @@ app.controller('MainCtrl', function ($scope, $http) {
       $scope.feedback = "";
       if (authenticate($scope.username, $scope.password)) {
         setUser($scope.username);
-        $scope.setContent('view', 2);
+        var manager = isManager();
+        toDirectory (manager);
       } else {
         $scope.feedback = "Invalid username and password";
       }

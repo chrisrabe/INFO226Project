@@ -355,6 +355,35 @@
       </div>
     </div>
 
+  <!-- BUILDING DIRECTORY EDITOR (Tab 7) -->
+
+    <div class="b_dir" ng-show="isSet('content',7)">
+      <div id="bd_outer">
+        <div id="bd_middle">
+          <h1 class="centered_heading">Building Directory</h1>
+          <div id="bd_inner">
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Owner</th>
+                <th>Address</th>
+                <th>View</th>
+              </tr>
+              <tr ng-repeat="entry in buildings">
+                <td>{{entry.ID}}</td>
+                <td>{{entry.Owner}}</td>
+                <td>{{entry.Address}}</td>
+                <td>
+                  <input class="button" type="submit" value="View" ng-click="toForm(entry.ID)" />
+                </td>
+              </tr>
+            </table>
+             <input class="button" type="submit" value="Add Building" ng-click="toForm(entry.ID)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- BUILDING FORM EDITOR (Tab 5) -->
 
     <div class="b_form_edit" ng-show="isSet('content',5)">
