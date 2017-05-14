@@ -29,10 +29,12 @@ var setTab = function (newTab) {
 var getTab = function () {
     return tab;
 };
-var toDirectory = function (isManager){
-    if (isManager){
-        setView(7);
-    }else {
-        setView(1);
+
+var toHome = function (isManager) {
+    if (isManager) {
+        setContent(7);
+    } else {
+        setContent(1);
     }
+    setView(2);
 };

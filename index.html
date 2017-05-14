@@ -61,7 +61,7 @@
     <div>
       <ul class="nav">
         <li ng-class="{active:isSet('content',1)}" class="nav-item">
-          <a href ng-click="setContent('content',1)">Building Directory</a>
+          <a href ng-click="toDirectory()">Building Directory</a>
         </li>
         <li ng-class="{active:isSet('content',2)}" class="nav-item">
           <a href ng-click="setContent('content',2)">About</a>
@@ -355,35 +355,6 @@
       </div>
     </div>
 
-  <!-- BUILDING DIRECTORY EDITOR (Tab 7) -->
-
-    <div class="b_dir" ng-show="isSet('content',7)">
-      <div id="bd_outer">
-        <div id="bd_middle">
-          <h1 class="centered_heading">Building Directory</h1>
-          <div id="bd_inner">
-            <table>
-              <tr>
-                <th>ID</th>
-                <th>Owner</th>
-                <th>Address</th>
-                <th>View</th>
-              </tr>
-              <tr ng-repeat="entry in buildings">
-                <td>{{entry.ID}}</td>
-                <td>{{entry.Owner}}</td>
-                <td>{{entry.Address}}</td>
-                <td>
-                  <input class="button" type="submit" value="View" ng-click="toForm(entry.ID)" />
-                </td>
-              </tr>
-            </table>
-             <input class="button" type="submit" value="Add Building" ng-click="toForm(entry.ID)" />
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- BUILDING FORM EDITOR (Tab 5) -->
 
     <div class="b_form_edit" ng-show="isSet('content',5)">
@@ -424,8 +395,8 @@
                 <span>
                   <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.BuildingType"></textarea>
                 </span>
-                <input class="button" type="submit" value="Save Changes" ng-click="updateBuilding()"/>
-             <input class="button" type="submit" value="Add Project" />
+                <input class="button" type="submit" value="Save Changes" ng-click="updateBuilding()" />
+                <input class="button" type="submit" value="Add Project" />
               </div>
             </form>
             <div class="proj_table">
@@ -626,6 +597,35 @@
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUILDING DIRECTORY EDITOR (Tab 7) -->
+
+    <div class="b_dir" ng-show="isSet('content',7)">
+      <div id="bd_outer">
+        <div id="bd_middle">
+          <h1 class="centered_heading">Building Directory</h1>
+          <div id="bd_inner">
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Owner</th>
+                <th>Address</th>
+                <th>View</th>
+              </tr>
+              <tr ng-repeat="entry in buildings">
+                <td>{{entry.ID}}</td>
+                <td>{{entry.Owner}}</td>
+                <td>{{entry.Address}}</td>
+                <td>
+                  <input class="button" type="submit" value="View" ng-click="toForm(entry.ID)" />
+                </td>
+              </tr>
+            </table>
+            <input class="button" type="submit" value="Add Building" ng-click="toForm(entry.ID)" />
           </div>
         </div>
       </div>

@@ -71,6 +71,10 @@ app.controller('MainCtrl', function ($scope, $http) {
     // Need to add update to project list
     $scope.backToForm();
   };
+  // navigates back to the building directory
+  $scope.toDirectory = function () {
+    toHome(isManager());
+  }
 
   // HTTP GET AND POST PROTOCOLS
 
@@ -102,8 +106,7 @@ app.controller('MainCtrl', function ($scope, $http) {
       $scope.feedback = "";
       if (authenticate($scope.username, $scope.password)) {
         setUser($scope.username);
-        var manager = isManager();
-        toDirectory (manager);
+        $scope.toDirectory();
       } else {
         $scope.feedback = "Invalid username and password";
       }
