@@ -16,7 +16,7 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.updateBuilding = function () {
     var newBuilding = $scope.building;
     updateBuilding($scope.buildings, newBuilding);
-    // NOTE: Post the new building information to the server (Next Sprint)
+    // [TODO] Post the new building information to the server (Next Sprint)
   };
 
   // Navigation functions of scope
