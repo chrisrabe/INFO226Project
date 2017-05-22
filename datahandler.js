@@ -143,9 +143,9 @@ var getLastID = function (array, isProject) {
     var lastID = 0;
     if (isProject) {
         // sort the array from lowest to highest number
-        arrays.sort(function (a, b) { return a.ProjectID - b.ProjectID });
+        array.sort(function (a, b) { return a.ProjectID - b.ProjectID });
         // retrieve the id of the last element of the array
-        lastID = parseInt(array[arrays.length - 1].ProjectID);
+        lastID = parseInt(array[array.length - 1].ProjectID);
     } else {
         // Sort the array from lowest to highest number
         array.sort(function (a, b) { return a.ID - b.ID });
@@ -168,15 +168,6 @@ var createID = function (array, isProject) {
         newID = lastID + 1; // increase id of last element by one
     }
     return newID;
-};
-
-// Retrieves the id of the last element in the array
-var getLastID = function (array) {
-    // Sort the array from lowest to highest number
-    array.sort(function (a, b) { return a.ID - b.ID });
-    // retrieve the id of the last element in the array
-    var lastID = parseInt(array[array.length - 1].ID);
-    return lastID; // return the id
 };
 
 // We use this in order to avoid changing the list containing actual values on the server

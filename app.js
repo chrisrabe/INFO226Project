@@ -11,23 +11,48 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.statusOptions = ["done", "on-going", "scheduled", "postponed", "cancelled"];
   $scope.workOptions = ["done", "on-going"];
   $scope.comment = "";
+  // Main server link
+  var server = "https://happybuildings.sim.vuw.ac.nz/api/channah/";
+
 
   // Data Update Methods
+
+  $scope.addBuilding = function () {
+    // create an empty building object
+    var newBuilding = createBuilding($scope.buildings);
+    // Add the building to the buildings array
+    $scope.buildings.push(newBuilding);
+    // set the scope's building as the empty building object
+    $scope.building = newBuilding;
+    // Change to the building form editor view
+    $scope.backToForm();
+  };
+
+  $scope.addProject = function () {
+    // create an empty project object
+    var newProject = createProject($scope.building.ID);
+    // Add the project to the projects list and projects displayed
+    $scope.projects.push(newProject);
+    addProject(newProject);
+    // Change to project editor view
+    $scope.toDetails(newProject.ProjectID);
+  };
 
   $scope.updateBuilding = function () {
     var newBuilding = $scope.building;
     updateBuilding($scope.buildings, newBuilding);
     // [TODO] Post the new building information to the server (Next Sprint)
   };
+
   $scope.updateProject = function () {
     var newProject = $scope.project;
-    updateProject (newProject);
+    updateProject(newProject);
     $scope.projects = getProjects($scope.building);
   };
 
   $scope.postComment = function () {
-    var user = getUser ();
-    postComment ($scope.project,{Author:user.LoginName,Text:$scope.comment});
+    var user = getUser();
+    postComment($scope.project, { Author: user.LoginName, Text: $scope.comment });
   };
   // Navigation functions of scope
 
@@ -98,8 +123,8 @@ app.controller('MainCtrl', function ($scope, $http) {
     // Initialise User Data
     $scope.username = "";
     $scope.password = "";
-    $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error loading user list'); });
-    $http.get('https://happybuildings.sim.vuw.ac.nz/api/your_username/building_dir.json').then(function success(response) { $scope.buildings = response.data.buildings; }, function error() { console.log('error loading building directory'); });
+    $http.get(server + 'user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error loading user list'); });
+    $http.get(server + 'building_dir.json').then(function success(response) { $scope.buildings = response.data.buildings; }, function error() { console.log('error loading building directory'); });
     setProjects(createProjects());
   };
 

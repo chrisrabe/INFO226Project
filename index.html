@@ -325,7 +325,7 @@
                 </div>
               </div>
               <div class="justified">
-                <input class="button" type="submit" value="Post" ng-click="postComment()"/>
+                <input class="button" type="submit" value="Post" ng-click="postComment()" />
               </div>
               <h2 class="centered_heading">Comments</h2>
               <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">
@@ -366,6 +366,14 @@
               </div>
               <div class="floating_block">
                 <span>
+                  <label>Owner:</label>
+                </span>
+                <span>
+                  <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.Owner"></textarea>
+                </span>
+              </div>
+              <div class="floating_block">
+                <span>
                   <label>Address:</label>
                 </span>
                 <span>
@@ -389,7 +397,7 @@
                   <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.BuildingType"></textarea>
                 </span>
                 <input class="button" type="submit" value="Save Changes" ng-click="updateBuilding()" />
-                <input class="button" type="submit" value="Add Project" />
+                <input class="button" type="submit" value="Add Project" ng-click="addProject()"/>
               </div>
             </form>
             <div class="proj_table">
@@ -566,7 +574,7 @@
                 </div>
               </div>
               <div class="justified">
-                <input class="button" type="submit" value="Post" ng-click="postComment()"/>
+                <input class="button" type="submit" value="Post" ng-click="postComment()" />
               </div>
               <h2 class="centered_heading">Comments</h2>
               <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">
@@ -612,7 +620,7 @@
                 </td>
               </tr>
             </table>
-            <input class="button" type="submit" value="Add Building" ng-click="toForm(entry.ID)" />
+            <input class="button" type="submit" value="Add Building" ng-click="addBuilding()" />
           </div>
         </div>
       </div>
