@@ -40,6 +40,11 @@ var updateBuilding = function (buildings, building) {
     }
 };
 
+// Deletes the building with the id from the buildings array
+var deleteBuilding = function (buildings, id) {
+    // TODO
+}
+
 // returns the project information
 var getProject = function () {
     return project;
@@ -94,6 +99,12 @@ var updateProject = function (newProject) {
             }
         }
     }
+};
+
+// Deletes the project from the projects array
+var deleteProject = function (id) {
+    // Find project with id
+    // Set the index with the given project id to null
 };
 
 // Construction Functions
