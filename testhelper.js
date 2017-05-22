@@ -59,7 +59,7 @@ var createProjects = function () {
     Works: [{
             TypeOfWork: "roofing",
             Status: "on-going"
-        },
+        }
     ],
 
     Comments: [{
