@@ -320,12 +320,12 @@
               <div class="justified">
                 <div class="floating_block">
                   <span>
-                  <textarea placeholder="Enter comment here..." rows="3" cols="50" style="resize: none"></textarea>
+                  <textarea placeholder="Enter comment here..." rows="3" cols="50" style="resize: none" ng-model="comment"></textarea>
                 </span>
                 </div>
               </div>
               <div class="justified">
-                <input class="button" type="submit" value="Post" />
+                <input class="button" type="submit" value="Post" ng-click="postComment()"/>
               </div>
               <h2 class="centered_heading">Comments</h2>
               <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">
@@ -443,7 +443,7 @@
                   <a href ng-click="setContent('project',4)">Comments</a>
                 </li>
                 <li class="nav-item">
-                  <a href>Save Changes</a>
+                  <a href ng-click="updateProject()">Save Changes</a>
                 </li>
                 <li class="active nav-item">
                   <a href ng-click="backToForm()">Back</a>
@@ -561,12 +561,12 @@
               <div class="justified">
                 <div class="floating_block">
                   <span>
-                  <textarea placeholder="Enter comment here..." rows="3" cols="50" style="resize: none"></textarea>
+                  <textarea placeholder="Enter comment here..." rows="3" cols="50" style="resize: none" ng-model="comment"></textarea>
                 </span>
                 </div>
               </div>
               <div class="justified">
-                <input class="button" type="submit" value="Post" />
+                <input class="button" type="submit" value="Post" ng-click="postComment()"/>
               </div>
               <h2 class="centered_heading">Comments</h2>
               <div class="justified" style="border-top: 1px solid black; overflow-y:scroll; height:300px;">

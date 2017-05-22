@@ -191,3 +191,8 @@ var clone = function (obj) {
     }
     return null;
 };
+
+var postComment = function (project, comment) {
+    var comments = project.Comments;
+    comments.push (comment);
+};

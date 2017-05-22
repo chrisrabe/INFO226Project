@@ -6,7 +6,7 @@ var user_list = [];
 // Getters and Setters
 
 var getUser = function () {
-    return user;
+    return globalUser;
 };
 
 var getList = function () {
