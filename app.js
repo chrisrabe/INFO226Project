@@ -10,6 +10,7 @@ app.controller('MainCtrl', function ($scope, $http) {
   // For editor view of project details
   $scope.statusOptions = ["done", "on-going", "scheduled", "postponed", "cancelled"];
   $scope.workOptions = ["done", "on-going"];
+  $scope.comment = "";
 
   // Data Update Methods
 
@@ -18,7 +19,16 @@ app.controller('MainCtrl', function ($scope, $http) {
     updateBuilding($scope.buildings, newBuilding);
     // NOTE: Post the new building information to the server (Next Sprint)
   };
+  $scope.updateProject = function () {
+    var newProject = $scope.project;
+    updateProject (newProject);
+    $scope.projects = getProjects($scope.building);
+  };
 
+  $scope.postComment = function () {
+    var user = getUser ();
+    postComment ($scope.project,{Author:user.LoginName,Text:$scope.comment});
+  };
   // Navigation functions of scope
 
   // Changes the type's content
