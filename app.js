@@ -16,6 +16,11 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // Data Update Methods
 
+  $scope.archiveProject = function (id) {
+    archiveProject(id);
+    $scope.projects = getProjects($scope.building);
+  };
+
   $scope.addBuilding = function () {
     // create an empty building object
     var newBuilding = createBuilding($scope.buildings);
