@@ -5,6 +5,8 @@ var projects = [];
 var project = null; // project which the project form displays
 var building = null; // building which the building form displays
 
+// Building Functions
+
 // returns the building information which the building form displays
 var getBuilding = function () {
     return building;
@@ -40,10 +42,7 @@ var updateBuilding = function (buildings, building) {
     }
 };
 
-// Deletes the building with the id from the buildings array
-var deleteBuilding = function (buildings, id) {
-    // TODO
-}
+// Project Functions
 
 // returns the project information
 var getProject = function () {
@@ -72,7 +71,7 @@ var getProjects = function (building) {
     // find all the projects related to the building in the array
     for (i = 0; i < projects.length; i++) {
         var item = projects[i];
-        if (item.BuildingID == building.ID) {
+        if (item.BuildingID == building.ID && item.Status != "archived") {
             results.push(item);
         }
     }
@@ -101,10 +100,21 @@ var updateProject = function (newProject) {
     }
 };
 
-// Deletes the project from the projects array
-var deleteProject = function (id) {
-    // Find project with id
-    // Set the index with the given project id to null
+// Archive the project with the given project id
+var archiveProject = function (id) {
+    // Find the project with the given id
+    for (i = 0; i < projects.length; i++) {
+        var item = projects[i];
+        if (item.ProjectID == id) {
+            item.Status = "archived";
+            break; // stop looking
+        }
+    }
+};
+
+var postComment = function (project, comment) {
+    var comments = project.Comments;
+    comments.push(comment);
 };
 
 // Construction Functions
@@ -181,9 +191,4 @@ var clone = function (obj) {
         return copy;
     }
     return null;
-};
-
-var postComment = function (project, comment) {
-    var comments = project.Comments;
-    comments.push (comment);
 };

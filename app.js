@@ -8,12 +8,11 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.project = null;
   $scope.projects = [];
   // For editor view of project details
-  $scope.statusOptions = ["done", "on-going", "scheduled", "postponed", "cancelled"];
+  $scope.statusOptions = ["done", "on-going", "scheduled", "postponed", "cancelled", "archived"];
   $scope.workOptions = ["done", "on-going"];
   $scope.comment = "";
   // Main server link
   var server = "https://happybuildings.sim.vuw.ac.nz/api/channah/";
-
 
   // Data Update Methods
 
@@ -54,6 +53,7 @@ app.controller('MainCtrl', function ($scope, $http) {
     var user = getUser();
     postComment($scope.project, { Author: user.LoginName, Text: $scope.comment });
   };
+
   // Navigation functions of scope
 
   // Changes the type's content
