@@ -112,6 +112,18 @@ var archiveProject = function (id) {
     }
 };
 
+// Returns all the archived projects from the server
+var getArchived = function () {
+    var results = [];
+    for (i = 0; i < projects.length; i++) {
+        var item = projects[i];
+        if (item.Status == "archived") {
+            results.push();
+        }
+    }
+    return results;
+};
+
 var postComment = function (project, comment) {
     var comments = project.Comments;
     comments.push(comment);

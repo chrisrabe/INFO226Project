@@ -413,7 +413,7 @@
                   <td>
                     <div class="table_floating_block">
                       <span>{{project.StartDate}} to {{project.EndDate}}</span>
-                      <span style="float: right"><input class="button" type="submit" value="Archive" /></span>
+                      <span style="float: right"><input class="button" type="submit" value="Archive" ng-click="archiveProject(project.ProjectID)"/></span>
                       <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails(project.ProjectID)"/></span>
                     </div>
                   </td>
