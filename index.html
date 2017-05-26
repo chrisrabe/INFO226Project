@@ -337,7 +337,7 @@
                   <p class="author">{{comment.Author}}</p>
                   <p class="message">{{comment.Text}}</p>
                   <div class="floating_block">
-                    <input class="button" type="submit" value="Delete" />
+                    <input class="button" type="submit" value="Delete" ng-click="deleteComment(comment.Text,comment.Author)" />
                   </div>
                   </span>
                   </li>
@@ -585,7 +585,7 @@
                   <p class="author">{{comment.Author}}</p>
                   <p class="message">{{comment.Text}}</p>
                   <div class="floating_block">
-                    <input class="button" type="submit" value="Delete" />
+                    <input class="button" type="submit" value="Delete" ng-click="deleteComment(comment.Text,comment.Author)" />
                   </div>
                   </span>
                   </li>

@@ -16,6 +16,11 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // Data Update Methods
 
+  $scope.deleteComment= function (text,author){
+    deleteComment (text,author,$scope.project);
+
+  };
+
   $scope.archiveProject = function (id) {
     archiveProject(id);
     $scope.projects = getProjects($scope.building);
@@ -62,7 +67,8 @@ app.controller('MainCtrl', function ($scope, $http) {
   $scope.postComment = function () {
     var user = getUser();
     postComment($scope.project, { Author: user.LoginName, Text: $scope.comment });
-  };
+    $scope.comment="";
+};
 
   // Navigation functions of scope
 

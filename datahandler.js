@@ -215,3 +215,15 @@ var clone = function (obj) {
     }
     return null;
 };
+
+var deleteComment = function (text, author, project) {
+    var comments = project.Comments;
+    for (i=0;i<comments.length;i++){
+        var comment = comments[i];
+        if (comment.Author==author && comment.Text==text){
+        comments.splice(i,1);
+        }
+    }
+
+
+};
