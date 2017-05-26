@@ -60,11 +60,11 @@
 
     <div>
       <ul class="nav">
-        <li ng-class="{active:isSet('content',1)}" class="nav-item">
+        <li ng-class="{active:isBuildingDirectory()}" class="nav-item">
           <a href ng-click="toDirectory()">Building Directory</a>
         </li>
         <li ng-class="{active:isSet('content',8)}" class="nav-item">
-          <a href ng-click="setContent('content',8)">Archived</a>
+          <a href ng-click="toArchive()">Archived</a>
         </li>
         <li ng-class="{active:isSet('content',2)}" class="nav-item">
           <a href ng-click="setContent('content',2)">About</a>
