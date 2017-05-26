@@ -60,11 +60,11 @@
 
     <div>
       <ul class="nav">
-        <li ng-class="{active:isSet('content',1)}" class="nav-item">
+        <li ng-class="{active:isBuildingDirectory()}" class="nav-item">
           <a href ng-click="toDirectory()">Building Directory</a>
         </li>
         <li ng-class="{active:isSet('content',8)}" class="nav-item">
-          <a href ng-click="setContent('content',8)">Archived</a>
+          <a href ng-click="toArchive()">Archived</a>
         </li>
         <li ng-class="{active:isSet('content',2)}" class="nav-item">
           <a href ng-click="setContent('content',2)">About</a>
@@ -399,7 +399,7 @@
                   <textarea placeholder="" rows="1" cols="30" style="resize: none" ng-model="building.BuildingType"></textarea>
                 </span>
                 <input class="button" type="submit" value="Save Changes" ng-click="updateBuilding()" />
-                <input class="button" type="submit" value="Add Project" ng-click="addProject()"/>
+                <input class="button" type="submit" value="Add Project" ng-click="addProject()" />
               </div>
             </form>
             <div class="proj_table">
@@ -627,27 +627,27 @@
         </div>
       </div>
     </div>
-<!-- Archived Projects (Tab 8) -->
+    <!-- Archived Projects (Tab 8) -->
 
-<div class="archived_projects" ng-show="isSet('content',8)">
-  <h1 class="centered_heading">Projects</h1>
-    <table>
-      <tr>
-        <th>Project ID</th>
-            <th>Name</th>
-        <th>Schedule</th>
-          </tr>
-          <tr ng-repeat="project in projects">
-        <td>{{project.ProjectID}}</td>
-        <td>{{project.Name}}</td>
+    <div class="archived_projects" ng-show="isSet('content',8)">
+      <h1 class="centered_heading">Projects</h1>
+      <table>
+        <tr>
+          <th>Project ID</th>
+          <th>Name</th>
+          <th>Schedule</th>
+        </tr>
+        <tr ng-repeat="project in projects">
+          <td>{{project.ProjectID}}</td>
+          <td>{{project.Name}}</td>
           <td>
-          <div class="table_floating_block">
-         <span>{{project.StartDate}} to {{project.EndDate}}</span>
-          <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails(project.ProjectID)"/></span>
-          </div>
-         </td>
-       </tr>
-     </table>
+            <div class="table_floating_block">
+              <span>{{project.StartDate}} to {{project.EndDate}}</span>
+              <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails(project.ProjectID)"/></span>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   
 <!-- ARCHIVED PROJECTS EDITOR (Tab 9) -->
@@ -677,6 +677,6 @@
    </div>
 
 
-</body>x
+</body>
 
 </html>

@@ -61,6 +61,13 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // Navigation functions of scope
 
+  $scope.toArchive = function () {
+    // retrieve all the archived projects
+    $scope.projects = getArchived();
+    // change to the archive content
+    $scope.setContent('content', 8);
+  };
+
   // Changes the type's content
   // If type is equal to "view", then it changes the web page
   // If type is equal to "content", then it changes the content page tabs
@@ -159,6 +166,7 @@ app.controller('MainCtrl', function ($scope, $http) {
       }
     }
   };
+
   // resets all the fields
   $scope.clearFields = function () {
     $scope.username = "";
@@ -167,7 +175,11 @@ app.controller('MainCtrl', function ($scope, $http) {
     setUser(null);
   };
 
-  // Works Checkbox control
+  // Helper Methods
+
+  $scope.isBuildingDirectory = function () {
+    return $scope.isSet('content', 1) || $scope.isSet('content', 7);
+  }
 
   $scope.isDone = function (status) {
     return status.toLowerCase() == 'done';
