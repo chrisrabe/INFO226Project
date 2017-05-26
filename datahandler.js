@@ -118,7 +118,7 @@ var getArchived = function () {
     for (i = 0; i < projects.length; i++) {
         var item = projects[i];
         if (item.Status == "archived") {
-            results.push();
+            results.push(item);
         }
     }
     return results;
