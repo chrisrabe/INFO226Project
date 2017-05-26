@@ -227,3 +227,8 @@ var deleteComment = function (text, author, project) {
 
 
 };
+
+var addWork = function (name,project) {
+    var works = project.Works;
+    works.push ({TypeOfWork:name,Status:"on-going"});
+};

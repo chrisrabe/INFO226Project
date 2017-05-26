@@ -16,6 +16,16 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // Data Update Methods
 
+$scope.addWork= function (){
+  var name= prompt("Please enter type of work","");
+  if (name == null || name == ""){
+   // ignore
+  }
+  else {
+    addWork(name,$scope.project);
+  }
+};
+
   $scope.deleteComment= function (text,author){
     deleteComment (text,author,$scope.project);
 
