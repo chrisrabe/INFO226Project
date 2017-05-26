@@ -649,32 +649,32 @@
         </tr>
       </table>
     </div>
-  
-<!-- ARCHIVED PROJECTS EDITOR (Tab 9) -->
 
-<div class="archived_projects" ng-show="isSet('content',9)">
-  <h1 class="centered_heading">Projects</h1>
-    <table>
-      <tr>
-        <th>Project ID</th>
-            <th>Name</th>
-        <th>Schedule</th>
-          </tr>
-          <tr ng-repeat="project in projects">
-        <td>{{project.ProjectID}}</td>
-        <td>{{project.Name}}</td>
+    <!-- ARCHIVED PROJECTS EDITOR (Tab 9) -->
+
+    <div class="archived_projects" ng-show="isSet('content',9)">
+      <h1 class="centered_heading">Projects</h1>
+      <table>
+        <tr>
+          <th>Project ID</th>
+          <th>Name</th>
+          <th>Schedule</th>
+        </tr>
+        <tr ng-repeat="project in projects">
+          <td>{{project.ProjectID}}</td>
+          <td>{{project.Name}}</td>
           <td>
-          <div class="table_floating_block">
-         <span>{{project.StartDate}} to {{project.EndDate}}</span>
-          <span style="float: right"><input class="button" type="submit" value="Unarchive" ng-click="toDetails(project.ProjectID)"/></span>
-          <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails(project.ProjectID)"/></span>
-          </div>
-         </td>
-       </tr>
-     </table>
+            <div class="table_floating_block">
+              <span>{{project.StartDate}} to {{project.EndDate}}</span>
+              <span style="float: right"><input class="button" type="submit" value="Unarchive" ng-click="unarchiveProject(project.ProjectID)"/></span>
+              <span style="float: right"><input class="button" type="submit" value="View" ng-click="toDetails(project.ProjectID)"/></span>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
 
-   </div>
+  </div>
 
 
 </body>

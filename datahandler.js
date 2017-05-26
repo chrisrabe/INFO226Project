@@ -112,6 +112,17 @@ var archiveProject = function (id) {
     }
 };
 
+var unarchiveProject = function (id) {
+    // Find the project with the given id
+    for (i = 0; i < projects.length; i++) {
+        var item = projects[i];
+        if (item.ProjectID == id) {
+            item.Status = "on-going";
+            break;
+        }
+    }
+};
+
 // Returns all the archived projects from the server
 var getArchived = function () {
     var results = [];

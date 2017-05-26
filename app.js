@@ -21,6 +21,11 @@ app.controller('MainCtrl', function ($scope, $http) {
     $scope.projects = getProjects($scope.building);
   };
 
+  $scope.unarchiveProject = function (id) {
+    unarchiveProject(id);
+    $scope.projects = getArchived();
+  };
+
   $scope.addBuilding = function () {
     // create an empty building object
     var newBuilding = createBuilding($scope.buildings);
@@ -65,7 +70,11 @@ app.controller('MainCtrl', function ($scope, $http) {
     // retrieve all the archived projects
     $scope.projects = getArchived();
     // change to the archive content
-    $scope.setContent('content', 8);
+    if (isManager()) {
+      $scope.setContent('content', 9);
+    } else {
+      $scope.setContent('content', 8);
+    }
   };
 
   // Changes the type's content
