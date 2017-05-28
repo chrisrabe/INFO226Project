@@ -16,6 +16,10 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // Data Update Methods
 
+$scope.deleteWork= function (name,status){
+  deleteWork (name, status, $scope.project);
+};
+
 $scope.addWork= function (){
   var name= prompt("Please enter type of work","");
   if (name == null || name == ""){

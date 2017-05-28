@@ -225,10 +225,19 @@ var deleteComment = function (text, author, project) {
         }
     }
 
-
 };
 
 var addWork = function (name,project) {
     var works = project.Works;
     works.push ({TypeOfWork:name,Status:"on-going"});
+};
+
+var deleteWork = function (name, status, project) {
+    var works = project.Works;
+    for (i=0;i<works.length;i++){
+        var work = works[i];
+        if (work.TypeOfWork==name && status==work.Status){
+            works.splice(i,1);
+        }
+    }
 };
