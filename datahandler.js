@@ -49,6 +49,14 @@ var getProject = function () {
     return project;
 };
 
+var getProjAtIndex = function (id) {
+    if (id < 0 || id > projects.length - 1) {
+        return null;
+    } else {
+        return projects[id];
+    }
+}
+
 var setProject = function (id) {
     // search the projects with the specified id
     for (i = 0; i < projects.length; i++) {
@@ -218,17 +226,17 @@ var clone = function (obj) {
 
 var deleteComment = function (text, author, project) {
     var comments = project.Comments;
-    for (i=0;i<comments.length;i++){
+    for (i = 0; i < comments.length; i++) {
         var comment = comments[i];
-        if (comment.Author==author && comment.Text==text){
-        comments.splice(i,1);
+        if (comment.Author == author && comment.Text == text) {
+            comments.splice(i, 1);
         }
     }
 
 
 };
 
-var addWork = function (name,project) {
+var addWork = function (name, project) {
     var works = project.Works;
-    works.push ({TypeOfWork:name,Status:"on-going"});
+    works.push({ TypeOfWork: name, Status: "on-going" });
 };

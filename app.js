@@ -16,29 +16,38 @@ app.controller('MainCtrl', function ($scope, $http) {
 
   // Data Update Methods
 
-$scope.addWork= function (){
-  var name= prompt("Please enter type of work","");
-  if (name == null || name == ""){
-   // ignore
-  }
-  else {
-    addWork(name,$scope.project);
-  }
-};
+  $scope.addWork = function () {
+    var name = prompt("Please enter type of work", "");
+    if (name == null || name == "") {
+      // ignore
+    }
+    else {
+      addWork(name, $scope.project);
+    }
+    postProject($scope.project);
+  };
 
-  $scope.deleteComment= function (text,author){
-    deleteComment (text,author,$scope.project);
-
+  $scope.deleteComment = function (text, author) {
+    deleteComment(text, author, $scope.project);
+    postProject($scope.project);
   };
 
   $scope.archiveProject = function (id) {
     archiveProject(id);
     $scope.projects = getProjects($scope.building);
+    var item = getProjAtIndex(id);
+    if (item != null) {
+      postProject(item);
+    }
   };
 
   $scope.unarchiveProject = function (id) {
     unarchiveProject(id);
     $scope.projects = getArchived();
+    var item = getProjAtIndex(id);
+    if (item != null) {
+      postProject(item);
+    }
   };
 
   $scope.addBuilding = function () {
@@ -48,6 +57,8 @@ $scope.addWork= function (){
     $scope.buildings.push(newBuilding);
     // set the scope's building as the empty building object
     $scope.building = newBuilding;
+    // Post it to the server
+    postBuilding($scope.building);
     // Change to the building form editor view
     $scope.backToForm();
   };
@@ -58,6 +69,8 @@ $scope.addWork= function (){
     // Add the project to the projects list and projects displayed
     $scope.projects.push(newProject);
     addProject(newProject);
+    // Post the new project to the server
+    postProject($scope.project);
     // Change to project editor view
     $scope.toDetails(newProject.ProjectID);
   };
@@ -65,20 +78,22 @@ $scope.addWork= function (){
   $scope.updateBuilding = function () {
     var newBuilding = $scope.building;
     updateBuilding($scope.buildings, newBuilding);
-    // [TODO] Post the new building information to the server (Next Sprint)
+    postBuilding(newBuilding);
   };
 
   $scope.updateProject = function () {
     var newProject = $scope.project;
     updateProject(newProject);
     $scope.projects = getProjects($scope.building);
+    postProject(newProject);
   };
 
   $scope.postComment = function () {
     var user = getUser();
     postComment($scope.project, { Author: user.LoginName, Text: $scope.comment });
-    $scope.comment="";
-};
+    $scope.comment = "";
+    postProject($scope.project);
+  };
 
   // Navigation functions of scope
 
@@ -162,7 +177,8 @@ $scope.addWork= function (){
     $scope.password = "";
     $http.get(server + 'user_list.json').then(function success(response) { setList(response.data.users); }, function error() { console.log('error loading user list'); });
     $http.get(server + 'building_dir.json').then(function success(response) { $scope.buildings = response.data.buildings; }, function error() { console.log('error loading building directory'); });
-    setProjects(createProjects());
+    getServerProject(server, 0);
+    //setProjects(createProjects()); // [TODO] Change this to a function that retrieves all projects
   };
 
   // LOGIN PAGE METHODS
@@ -209,4 +225,51 @@ $scope.addWork= function (){
   $scope.isDone = function (status) {
     return status.toLowerCase() == 'done';
   };
+
+  var getServerProject = function (server, id) {
+    $http.get(server + "project." + id + ".json").then(
+      function successCall(response) {
+        console.log(response.data);
+        addProject(response.data);
+        getServerProject(server, id + 1);
+      },
+      function errorCall(reponse) {
+        console.log("Error Retrieving Data");
+        // Do nothing
+      }
+    );
+  };
+
+  var postBuilding = function (building) {
+    $http(
+      {
+        method: "POST",
+        url: server + "update.building.json",
+        data: building,
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(function successCall(response) {
+        alert("Successfully Updated Building");
+      }, function errorCall(response) {
+        alert("Error Updating Building");
+      }
+      );
+  };
+
+  var postProject = function (project) {
+    $http
+      ({
+        method: "POST",
+        url: server + "update.project.json",
+        data: project,
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(function successCall(response) {
+        alert("Successfully Updated Project");
+      }, function errorCall(response) {
+        alert("Error Updating Project");
+      }
+      );
+  };
+
 });
