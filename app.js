@@ -235,7 +235,6 @@ app.controller('MainCtrl', function ($scope, $http) {
   var getServerProject = function (server, id) {
     $http.get(server + "project." + id + ".json").then(
       function successCall(response) {
-        console.log(response.data);
         addProject(response.data);
         getServerProject(server, id + 1);
       },
