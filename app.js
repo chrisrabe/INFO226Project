@@ -27,6 +27,12 @@ app.controller('MainCtrl', function ($scope, $http) {
     postProject($scope.project);
   };
 
+  $scope.deleteWork = function (name, status) {
+    deleteWork(name, status, $scope.project);
+    postProject($scope.project);
+  };
+
+
   $scope.deleteComment = function (text, author) {
     deleteComment(text, author, $scope.project);
     postProject($scope.project);
