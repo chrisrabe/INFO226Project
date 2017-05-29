@@ -256,7 +256,7 @@ app.controller('MainCtrl', function ($scope, $http) {
       .then(function successCall(response) {
         alert("Successfully Updated Building");
       }, function errorCall(response) {
-        alert("Error Updating Building");
+        console.log("Error Updating Building");
       }
       );
   };
@@ -272,7 +272,7 @@ app.controller('MainCtrl', function ($scope, $http) {
       .then(function successCall(response) {
         alert("Successfully Updated Project");
       }, function errorCall(response) {
-        alert("Error Updating Project");
+        console.log("Error Updating Project");
       }
       );
   };
